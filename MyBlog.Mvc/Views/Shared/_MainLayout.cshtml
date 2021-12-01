@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <partial name="_MetaTags" />
+    <title>روبیک مارکت | @ViewData["Title"]</title>
+    <!-- CSS Styles -->
+    <partial name="_LinkTags" />
+    <!-- /CSS Styles -->
+   
+</head>
+<body>
+    <!-- Header -->
+    <partial name="_Header" />
+    <!-- /Header -->
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <partial name="_Footer" />
+    <!-- /Footer -->
+    <!-- Copyright -->
+    <partial name="_CopyRight" />
+    <!-- Copyright -->
+    <!-- Scripts -->
+    <partial name="_Scripts" />
+    <!-- /Scripts -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

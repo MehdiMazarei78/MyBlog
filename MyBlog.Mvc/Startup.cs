@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyBlog.Infra.Data.Context;
+using MyBlog.Infra.IoC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +27,20 @@ namespace MyBlog.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+             #region DataBase Context
+            services.AddDbContext<MyBlogContext>(option =>
+            {
+                option.UseSqlServer(Configuration.GetConnectionString("MyBlogConnection"));
+            });
+            #endregion
+
+            #region IoC
+
+            RegisterServices(services);
+
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +69,11 @@ namespace MyBlog.Mvc
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        public static void RegisterServices(IServiceCollection services)
+        {
+            Dependencycontainer.RegisterServices(services);
         }
     }
 }

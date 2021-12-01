@@ -1,0 +1,57 @@
+﻿<section id="header">
+    <!-- Top NavBar -->
+    <div id="top-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 d-none d-md-block">
+                    <ul>
+                        <li><a href="/">صفحه نخست</a></li>
+                        <li><a href="/">درباره ما</a></li>
+                        <li><a href="/">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 text-center text-md-end" id="top-support-info">
+                    <span>تلفن : 09178509578</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Top NavBar -->
+    <!-- Search NavBar -->
+    <div id="search-nav">
+        <div class="container pt-1">
+            <div class="row py-3 align-content-center">
+                <div class="col-12 col-md-3 col-xl-2 text-center text-md-start pb-2" id="header-logo">
+                    <a href="/">
+                        <img src="/images/logo.png" alt=""> روبیک بلاگ
+                    </a>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6">
+                    <div id="search-bar">
+                        <i class="fa fa-search"></i>
+                        <input type="text" placeholder="جستجو کنید...">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
+                                <a href="/UserPanel">@User.Identity.Name</a> /
+                                <a href="/Logout">خروج</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-12 col-md-7 col-lg-6 text-center" id="btn-login-register">
+                                <a href="/Login">ورود</a> /
+                                <a href="/Register">عضویت</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Search NavBar -->
+</section>
