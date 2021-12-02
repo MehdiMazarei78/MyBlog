@@ -36,5 +36,12 @@ namespace MyBlog.Domain.Entities.User
         public DateTime RegisterDate { get; set; }
 
         public bool isDelete { get; set; }
+
+        #region Relations
+
+        public List<MyBlog.Domain.Entities.Post.Post> Posts { get; set; }
+
+
+        #endregion
     }
 }
