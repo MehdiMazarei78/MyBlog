@@ -1,0 +1,82 @@
+﻿@model MyBlog.Domain.Entities.Post.Post
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = "افزودن پست جدید";
+}
+
+<div class="row">
+    <form asp-action="AddPost" asp-controller="Blog" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+        <div class="col-md-10 container">
+            <h2>اطلاعات پست</h2>
+            <hr />
+            <div class="form-group">
+                <label>عنوان پست</label>
+                <input type="text" asp-for="PostTitle" class="form-control">
+                <span asp-validation-for="PostTitle"></span>
+            </div>
+            <div class="form-group">
+                <label>شرح مختصر پست</label>
+                <textarea class="form-control" asp-for="PostSmalDescription" rows="2"></textarea>
+                <span asp-validation-for="PostSmalDescription"></span>
+            </div>
+            <div class="form-group">
+                <label>شرح پست</label>
+                <textarea class="form-control" asp-for="PostDescription" rows="10"></textarea>
+                <span asp-validation-for="PostDescription"></span>
+            </div>
+
+            <div class="form-group">
+                <label>کلمات کلیدی پست</label>
+                <input type="text" asp-for="Tags" class="form-control">
+                <p class="help-block">کلمات را با - جدا کنید</p>
+                <span asp-validation-for="Tags"></span>
+            </div>
+            <p></p>
+            <img id="imgPost" class="thumbnail mb-3" src="/images/PostImage/image/no-image.png" />
+            <div class="form-group">
+                <label>انتخاب تصویر</label>
+                <input type="file" name="imgPostUp" id="imgPostUp">
+            </div>
+            <div class="form-group w-25">
+                <label>وضعیت پست</label>
+                <select class="form-control" asp-for="StatusId" asp-items="@(ViewData["Statues"] as SelectList)"></select>
+                <span asp-validation-for="StatusId"></span>
+
+                <input type="submit" value="ذخیره اطلاعات" class="btn btn-success mt-5" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script>
+
+
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPost').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgPostUp").change(function () {
+            readURL(this);
+        });
+    </script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('PostDescription', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
+}

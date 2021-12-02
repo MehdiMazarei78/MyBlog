@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    
+    
+    
+    <PackageReference Include="CoreCompat.System.Drawing.v2" Version="5.2.0-preview1-r131" />
+    
+    
+    
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.12" />
+    
+    
+    
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
