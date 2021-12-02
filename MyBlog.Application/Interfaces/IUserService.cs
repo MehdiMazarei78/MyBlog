@@ -1,4 +1,5 @@
-﻿using MyBlog.Domain.Entities.User;
+﻿using MyBlog.Application.DTOs.Users;
+using MyBlog.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace MyBlog.Application.Interfaces
         bool IsExistUserName(string userName);
         bool IsExistEmail(string eamil);
         int AddUser(User user);
+        User LoginUser(LoginViewModel user);
     }
 }

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.Application.DTOs.Users;
 using MyBlog.Application.Interfaces;
 using MyBlog.Application.Security;
@@ -6,6 +9,7 @@ using MyBlog.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MyBlog.Mvc.Controllers
@@ -19,7 +23,6 @@ namespace MyBlog.Mvc.Controllers
         }
 
         #region Register
-
         [Route("Register")]
         public IActionResult Register()
         {
@@ -59,6 +62,49 @@ namespace MyBlog.Mvc.Controllers
             return RedirectToAction("Login");
         }
 
+
+        #endregion
+
+        #region Login
+
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login(LoginViewModel login)
+        {
+            if (!ModelState.IsValid)
+                return View(login);
+
+            var user = _userService.LoginUser(login);
+            if(user != null)
+            {
+                var claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.NameIdentifier,user.UserId.ToString()),
+                        new Claim(ClaimTypes.Name,user.UserName),
+                        new Claim(ClaimTypes.Email,user.Email)
+                    };
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+
+                var properties = new AuthenticationProperties
+                {
+                    IsPersistent = login.RememberMe
+                };
+                HttpContext.SignInAsync(principal, properties);
+
+
+                return Redirect("/");
+            }
+
+            ModelState.AddModelError("Email", "کاربری با این ایمیل یافت نشد");
+            return View(login);
+
+        }
 
         #endregion
 

@@ -12,6 +12,7 @@ namespace MyBlog.Domain.Interfaces
         bool IsExistUserName(string userName);
         bool IsExistEmail(string email);
         void AddUser(User user);
+        User LoginUser(string pass , string email);
         void Save();
 
     }

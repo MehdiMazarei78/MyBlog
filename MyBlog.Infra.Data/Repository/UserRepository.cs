@@ -32,6 +32,11 @@ namespace MyBlog.Infra.Data.Repository
             return _context.Users.Any(u => u.UserName == userName);
         }
 
+        public User LoginUser(string pass , string email)
+        {
+            return _context.Users.SingleOrDefault(u => u.Password == pass && u.Email == email);
+        }
+
         public void Save()
         {
             _context.SaveChanges();

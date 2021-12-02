@@ -1,4 +1,6 @@
-﻿using MyBlog.Application.Interfaces;
+﻿using MyBlog.Application.DTOs.Users;
+using MyBlog.Application.Interfaces;
+using MyBlog.Application.Security;
 using MyBlog.Domain.Entities.User;
 using MyBlog.Domain.Interfaces;
 using System;
@@ -32,6 +34,14 @@ namespace MyBlog.Application.Services
         public bool IsExistUserName(string userName)
         {
             return _userRepository.IsExistUserName(userName);
+        }
+
+        public User LoginUser(LoginViewModel user)
+        {
+            string hashPassword = PasswordHelper.EncodePasswordMd5(user.Password);
+            string email = FixText.FixEmail(user.Email);
+
+            return _userRepository.LoginUser(hashPassword, email);
         }
     }
 }
