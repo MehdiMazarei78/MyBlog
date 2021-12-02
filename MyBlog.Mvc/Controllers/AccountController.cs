@@ -108,5 +108,16 @@ namespace MyBlog.Mvc.Controllers
 
         #endregion
 
+        #region Logout
+
+        [Route("Logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("/Login");
+        }
+
+        #endregion
+
     }
 }

@@ -13,6 +13,13 @@ namespace MyBlog.Application.Interfaces
         bool IsExistUserName(string userName);
         bool IsExistEmail(string eamil);
         int AddUser(User user);
+
         User LoginUser(LoginViewModel user);
+
+        EditProfileUserViewModel GetUserForEdit(string userName);
+        void EditProfile(string username, EditProfileUserViewModel editPro);
+
+        InformationUserPanelViewModel GetUserInformationForUserPanel(string userName);
+
     }
 }

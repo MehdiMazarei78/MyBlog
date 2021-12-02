@@ -22,6 +22,11 @@ namespace MyBlog.Infra.Data.Repository
             _context.Add(user);
         }
 
+        public User GetUserByUserName(string userName)
+        {
+            return _context.Users.SingleOrDefault(u => u.UserName == userName);
+        }
+
         public bool IsExistEmail(string email)
         {
             return _context.Users.Any(u => u.Email == email);
@@ -40,6 +45,11 @@ namespace MyBlog.Infra.Data.Repository
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        public void UpdateUser(User user)
+        {
+            _context.Update(user);
         }
     }
 }

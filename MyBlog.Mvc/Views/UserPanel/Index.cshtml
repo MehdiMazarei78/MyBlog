@@ -1,0 +1,91 @@
+﻿@model MyBlog.Application.DTOs.Users.InformationUserPanelViewModel
+@using MyBlog.Application.Tools
+@{
+    ViewData["Title"] = "پنل کاربری";
+}
+
+<section class="inner-page" id="profile-page">
+    <div class="container-fluid" id="page-hero">
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 px-0">
+                            <h1>ناحیه کاربری</h1>
+                            <p>به ناحیه کاربری روبیک بلاگ خوش آمدید.</p>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">صفحه نخست</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">ناحیه کاربری</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-12 col-lg-3">
+                            <!-- Side Panel -->
+                            @await Component.InvokeAsync("SideBarUserPanel")
+                            <!-- /Side Panel -->
+                        </div>
+                        <div class="col-12 col-lg-9 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
+                            <!-- Profile Fields -->
+                            <div class="custom-container bg-light" id="profile-fields">
+                                <div class="row pt-2 px-3 ">
+                                    <div class="col-12"><h1>اطلاعات شخصی</h1></div>
+                                </div>
+                                <hr>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 profile-field py-2">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div class="title"> نام کاربری </div>
+                                                    <div class="value"> @Model.UserName </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-12 profile-field py-2">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div class="title">پست الکترونیک</div>
+                                                    <div class="value">@Model.Email</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 profile-field py-2">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div class="title">تاریخ عضویت</div>
+                                                    <div class="value">@Model.RegisterDate.ConvertToShamsi()</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Profile Fields -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

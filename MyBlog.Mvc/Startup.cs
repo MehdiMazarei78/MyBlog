@@ -42,13 +42,14 @@ namespace MyBlog.Mvc
 
             #endregion
 
-            #region Authentication
+           #region Authentication
 
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
             }).AddCookie(options =>
             {
                 options.LoginPath = "/Login";
@@ -78,8 +79,8 @@ namespace MyBlog.Mvc
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

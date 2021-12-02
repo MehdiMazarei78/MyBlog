@@ -9,9 +9,12 @@ namespace MyBlog.Domain.Interfaces
 {
     public interface IUserRepository
     {
+        User GetUserByUserName(string userName);
+
         bool IsExistUserName(string userName);
         bool IsExistEmail(string email);
         void AddUser(User user);
+        void UpdateUser(User user);
         User LoginUser(string pass , string email);
         void Save();
 

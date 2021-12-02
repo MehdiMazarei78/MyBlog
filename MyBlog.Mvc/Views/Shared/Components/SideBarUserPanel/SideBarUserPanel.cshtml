@@ -1,0 +1,55 @@
+﻿
+@model MyBlog.Application.DTOs.Users.InformationUserPanelViewModel
+
+<div class="accordion" id="side-panel">
+    <div class="accordion-item menu-container">
+        <h2 class="accordion-header">
+            <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                <div class="row">
+                    <div class="col-3 col-sm-2 col-lg-3">
+                        <img src="/images/UserAvatar/@Model.ImageName" class="rounded-circle">
+                    </div>
+                    <div class="col-7 col-sm-8 col-lg-7 pt-0 pt-sm-2 pt-md-3 pt-lg-0 align-self-center">
+                        <div id="full-name">@Model.UserName</div>
+                        <div class="mt-4" style="font-size:12px;" id="email-mobile">@Model.Email</div>
+                    </div>
+                </div>
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <ul>
+                    <li>
+                        <a href="/UserPanel">
+                            <div>
+                                <div class="icon d-inline-block"><img src="/images/icons/profile-menu/profile.webp" class="pl-2"></div> اطلاعات حساب
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/UserPanel/EditProfile/">
+                            <div>
+                                <div class="icon d-inline-block"><img src="/images/icons/profile-menu/profile.webp" class="pl-2"></div> ویرایش حساب کاربری
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/UserPanel/ChangePassword">
+                            <div>
+                                <div class="icon d-inline-block"><img src="/images/icons/profile-menu/profile.webp" class="pl-2"></div> ویرایش کلمه عبور
+                            </div>
+                        </a>
+                    </li>
+                    <li><hr></li>
+                    <li>
+                        <a href="/Logout">
+                            <div>
+                                <div class="icon d-inline-block"><img src="/images/icons/profile-menu/exit.webp" class="pl-2"></div> خروج از حساب
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
