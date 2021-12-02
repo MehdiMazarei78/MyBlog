@@ -64,5 +64,33 @@ namespace MyBlog.Mvc.Controllers
         }
 
         #endregion
+
+        #region Change Password
+        [Route("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword(ChangePasswordViewModel changePass)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            if (!_userService.ConfirmOldPassword(User.Identity.Name,changePass.OldPassword))
+            {
+                ModelState.AddModelError("OldPassword", "کلمه عبور فعلی صحیح نمی باشد.");
+                return View(changePass);
+            }
+
+            _userService.ChangePassword(User.Identity.Name, changePass.Password);
+            ViewBag.isSuccess = true;
+            return View();
+        }
+
+        #endregion
     }
 }

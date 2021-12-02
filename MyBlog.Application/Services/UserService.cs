@@ -28,6 +28,20 @@ namespace MyBlog.Application.Services
             return user.UserId;
         }
 
+        public void ChangePassword(string userName,string newPass )
+        {
+            var user = _userRepository.GetUserByUserName(userName);
+            user.Password = PasswordHelper.EncodePasswordMd5(newPass);
+            _userRepository.UpdateUser(user);
+            _userRepository.Save();
+        }
+
+        public bool ConfirmOldPassword(string name, string oldPass)
+        {
+            var hashPassword = PasswordHelper.EncodePasswordMd5(oldPass);
+            return _userRepository.ConfirmOldPassword(name, hashPassword);
+        }
+
         public void EditProfile(string username, EditProfileUserViewModel editPro)
         {
             if (editPro.UserAvatar != null)

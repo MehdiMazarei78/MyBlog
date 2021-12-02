@@ -22,6 +22,11 @@ namespace MyBlog.Infra.Data.Repository
             _context.Add(user);
         }
 
+        public bool ConfirmOldPassword(string userName, string oldPass)
+        {
+            return _context.Users.Any(u => u.UserName == userName && u.Password == oldPass);
+        }
+
         public User GetUserByUserName(string userName)
         {
             return _context.Users.SingleOrDefault(u => u.UserName == userName);
