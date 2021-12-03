@@ -93,6 +93,35 @@ namespace MyBlog.Application.Services
             _blogRepository.Save();
         }
 
+        public Tuple<List<ListPostsForShowInIndexViewModel>, int> GetAllPostsForShow(int pageId = 1, int take = 0)
+        {
+            var res = _blogRepository.GetAllPost().Where(p => p.StatusId == 1);
+
+            int skip = (pageId - 1) * take;
+
+            var count = res.Select(p => new ListPostsForShowInIndexViewModel()
+            {
+                PostId = p.PostId,
+                CreateDate = p.CreateDate,
+                Description = p.PostSmalDescription,
+                ImageName = p.PostImageName,
+                Title = p.PostTitle
+            }).Count();
+
+            var pageCount = (int)Math.Ceiling((decimal)count / take);
+
+            var posts = res.OrderByDescending(p => p.CreateDate).Select(p => new ListPostsForShowInIndexViewModel()
+            {
+                PostId = p.PostId,
+                CreateDate = p.CreateDate,
+                Description = p.PostSmalDescription,
+                ImageName = p.PostImageName,
+                Title = p.PostTitle
+            }).Skip(skip).Take(take).ToList();
+
+            return Tuple.Create(posts, pageCount);
+        }
+
         public List<ListPostForUserViewModel> GetAllUserPost(int userId)
         {
             return _blogRepository.GetAllPost().Where(p => p.UserId == userId).Select(p => new ListPostForUserViewModel()

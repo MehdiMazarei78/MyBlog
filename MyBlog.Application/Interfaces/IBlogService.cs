@@ -17,6 +17,7 @@ namespace MyBlog.Application.Interfaces
         Post GetPostByPostId(int postId);
         List<ListPostForUserViewModel> GetDeletePost(int userId);
         PostForDeleteViewModel GetPostForDelete(int postId);
+        Tuple<List<ListPostsForShowInIndexViewModel>, int> GetAllPostsForShow(int pageId = 1, int take = 0);
 
         int AddBlog(Post post, IFormFile imgPost);
         void EditPost(Post post, IFormFile imgPost);

@@ -1,17 +1,17 @@
-﻿
+﻿@model Tuple<List<MyBlog.Application.DTOs.Posts.ListPostsForShowInIndexViewModel> , int>
 @{
     ViewData["Title"] = "خانه";
 }
 
 <section class="inner-page" id="blog-page">
-    <form id="FormFilter" asp-controller="Blog" method="get">
-        @*<input type="hidden" id="pageId" name="pageId" value="@ViewBag.PageId.ToString()" />*@
+    <form id="FormFilter" asp-controller="Home" method="get">
+        <input type="hidden" id="pageId" name="pageId" value="@ViewBag.PageId.ToString()" />
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="content">
                         <div class="row">
-                            <div class="col-12 col-lg-10">
+                            <div class="col-12 col-lg-12">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="blog-container">
@@ -19,16 +19,14 @@
                                                 <div class="col"><h1 class="title">مرکز آموزش روبیک مارکت</h1></div>
                                             </div>
                                             <div class="container px-2 pb-3">
-                                                <div class="row row-cols-1 row-cols-md-2">
-                                                    <!-- Blog Post -->
-                                                    @*@foreach (var item in Model.Item1)
+                                                <div class="row row-cols-1 row-cols-md-3">
+                                                    @foreach (var item in Model.Item1)
                                                     {
-                                                        <partial name="_BoxBlog" model="@item" />
-                                                    }*@
-                                                    <!-- Blog Post -->
+                                                        <partial name="_BoxPost" model="@item" />
+                                                    }
                                                 </div>
                                             </div>
-                                            @*@if (Model.Item2 > 1)
+                                            @if (Model.Item2 > 1)
                                             {
                                                 <div class="row">
                                                     <nav aria-label="Page navigation example">
@@ -41,10 +39,10 @@
                                                             </li>
                                                             @for (int i = 1; i <= Model.Item2; i++)
                                                             {
-                                                                <li class="page-item"><a class="page-link" onclick="ChangePage(@i)" href="#">@i</a></li>
+                                                                <li class="page-item"><a class="page-link" onclick="ChangePage(@i)">@i</a></li>
                                                             }
                                                             <li class="page-item">
-                                                                <a class="page-link" href="#" aria-label="Next">
+                                                                <a class="page-link" aria-label="Next">
                                                                     <span aria-hidden="true">&raquo;</span>
                                                                     <span class="sr-only">Next</span>
                                                                 </a>
@@ -52,7 +50,7 @@
                                                         </ul>
                                                     </nav>
                                                 </div>
-                                            }*@
+                                            }
                                         </div>
                                     </div>
                                 </div>
