@@ -25,6 +25,11 @@ namespace MyBlog.Infra.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+
+            modelBuilder.Entity<Post>()
+                 .HasQueryFilter(p => !p.IsDelete);
+
+
             modelBuilder.Entity<Post>()
           .HasOne<PostStatus>(p => p.PostStatus)
           .WithMany(p => p.Posts)

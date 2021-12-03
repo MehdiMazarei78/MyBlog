@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Application.DTOs.Posts
 {
-    public class ListPostForUser
+    public class ListPostForUserViewModel
     {
         public int PostId { get; set; }
         public string Title { get; set; }
         public string Status { get; set; }
         public string ImageName { get; set; }
     }
+    public class PostForDeleteViewModel
+    {
+        public string Title { get; set; }
+        public string Status { get; set; }
+        public DateTime CreateDate { get; set; }
+    }
+
 
 }

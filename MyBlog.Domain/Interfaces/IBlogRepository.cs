@@ -11,7 +11,12 @@ namespace MyBlog.Domain.Interfaces
     {
         IEnumerable<PostStatus> GetStatuses();
         IEnumerable<Post> GetAllPost();
+        IEnumerable<Post> GetAllDeletePost();
         void AddPost(Post post);
+        void UpdatePost(Post post);
+
+        Post GetPostByPostId(int postId);
+        Post GetPostForDelete(int postId);
         void Save();
     }
 }
