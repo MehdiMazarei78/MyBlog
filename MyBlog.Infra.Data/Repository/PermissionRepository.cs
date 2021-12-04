@@ -29,12 +29,22 @@ namespace MyBlog.Infra.Data.Repository
             _context.Roles.Add(role);
         }
 
-        public IEnumerable<Permission> GetPermissions()
+        public IEnumerable<Permission> GetPermission()
         {
             return _context.Permission;
         }
 
-        public IEnumerable<Role> GetRoles()
+        public Role GetRoleById(int roleId)
+        {
+           return _context.Roles.Find(roleId);
+        }
+
+        public IEnumerable<RolePermission> GetRolePermission()
+        {
+            return _context.RolePermission;
+        }
+
+        public IEnumerable<Role> GetRole()
         {
             return _context.Roles;
         }
@@ -42,6 +52,16 @@ namespace MyBlog.Infra.Data.Repository
         public void save()
         {
             _context.SaveChanges();
+        }
+
+        public void UpdateRole(Role role)
+        {
+            _context.Roles.Update(role);
+        }
+
+        public void RemovedPermissionInRole(RolePermission rolePermission)
+        {
+            _context.RolePermission.Remove(rolePermission);
         }
     }
 }

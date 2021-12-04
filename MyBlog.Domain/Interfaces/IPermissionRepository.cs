@@ -10,11 +10,17 @@ namespace MyBlog.Domain.Interfaces
 {
     public interface IPermissionRepository
     {
-        IEnumerable<Role> GetRoles();
-        IEnumerable<Permission> GetPermissions();
+        IEnumerable<Role> GetRole();
+        IEnumerable<Permission> GetPermission();
+        IEnumerable<RolePermission> GetRolePermission();
+
+        Role GetRoleById(int roleId);
 
         void AddRole(Role role);
+        void UpdateRole(Role role);
+        
         void AddPermissionToRole(RolePermission rolePermission);
+        void RemovedPermissionInRole(RolePermission rolePermission);
         void save();
     }
 }

@@ -13,7 +13,13 @@ namespace MyBlog.Application.Interfaces
         List<Role> GetRoles();
         List<Permission> GetPermissions();
 
+        Role GetRoleById(int roleId);
+        List<int> GetRolePermission(int roleId);
+
         int AddRole(Role role);
+        void UpdateRole(Role role);
+        void DeleteRole(Role role);
+        void UpdatePermissionsRole(int roleId, List<int> permissions);
 
         void AddPermissionToRole(int roleId, List<int> selectedPermission);
     }
