@@ -40,6 +40,7 @@ namespace MyBlog.Domain.Entities.User
         #region Relations
 
         public List<MyBlog.Domain.Entities.Post.Post> Posts { get; set; }
+        public List<UserRole> UserRoles { get; set; }
 
 
         #endregion

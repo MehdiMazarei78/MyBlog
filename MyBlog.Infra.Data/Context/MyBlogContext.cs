@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.Domain.Entities.Permissions;
 using MyBlog.Domain.Entities.Post;
 using MyBlog.Domain.Entities.User;
 using System;
@@ -18,8 +19,16 @@ namespace MyBlog.Infra.Data.Context
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+
+
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostStatus> PostStatuses { get; set; }
+
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<RolePermission> RolePermission { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +37,11 @@ namespace MyBlog.Infra.Data.Context
 
             modelBuilder.Entity<Post>()
                  .HasQueryFilter(p => !p.IsDelete);
+            modelBuilder.Entity<User>()
+               .HasQueryFilter(u => !u.isDelete);
+            modelBuilder.Entity<Role>()
+                 .HasQueryFilter(r => !r.IsDelete);
+
 
 
             modelBuilder.Entity<Post>()
