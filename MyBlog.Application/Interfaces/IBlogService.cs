@@ -14,6 +14,7 @@ namespace MyBlog.Application.Interfaces
     {
         List<SelectListItem> GetStatuses();
         List<ListPostForUserViewModel> GetAllUserPost(int userId);
+        List<ListPostForAdminViewModel> GetAllPostsForAdmin();
         Post GetPostByPostId(int postId);
         List<ListPostForUserViewModel> GetDeletePost(int userId);
         PostForDeleteViewModel GetPostForDelete(int postId);
@@ -22,5 +23,7 @@ namespace MyBlog.Application.Interfaces
         int AddBlog(Post post, IFormFile imgPost);
         void EditPost(Post post, IFormFile imgPost);
         void DeletePost(int postId);
+
+        DeletePostForAdminViewModel GetPostForDeleteForAdmin(int postId);
     }
 }

@@ -1,0 +1,37 @@
+﻿@page "{id}"
+@model MyBlog.Mvc.Pages.Admin.Posts.DeletePostModel
+@using MyBlog.Application.Tools
+@{
+    ViewData["Title"] = "حذف پست";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف پست
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" asp-for="PostInfo.PostId" />
+
+                <dl class="dl-horizontal">
+                    <dt>عنوان : </dt>
+                    <dd>@Model.PostInfo.Title</dd>
+                    <dt>تاریخ ایجاد : </dt>
+                    <dd>@Model.PostInfo.CreateDate.ConvertToShamsi()</dd>
+                    <dt>وضعیت پست : </dt>
+                    <dd>@Model.PostInfo.Status</dd>
+                    <dt>نویسنده پست : </dt>
+                    <dd>@Model.PostInfo.User</dd>
+                    <dt></dt>
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-danger" />
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

@@ -14,6 +14,22 @@ namespace MyBlog.Application.DTOs.Posts
         public string Status { get; set; }
         public string ImageName { get; set; }
     }
+    public class ListPostForAdminViewModel
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string User { get; set; }
+        public string Status { get; set; }
+        public string ImageName { get; set; }
+    }
+    public class DeletePostForAdminViewModel
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string User { get; set; }
+        public string Status { get; set; }
+        public DateTime CreateDate { get; set; }
+    }
     public class PostForDeleteViewModel
     {
         public string Title { get; set; }

@@ -13,6 +13,7 @@ namespace MyBlog.Domain.Interfaces
         IEnumerable<Role> GetRole();
         IEnumerable<Permission> GetPermission();
         IEnumerable<RolePermission> GetRolePermission();
+        IEnumerable<UserRole> GetUserRole();
 
         Role GetRoleById(int roleId);
 
@@ -20,7 +21,10 @@ namespace MyBlog.Domain.Interfaces
         void UpdateRole(Role role);
         
         void AddPermissionToRole(RolePermission rolePermission);
+        void AddRolesToUser(UserRole userRole);
+
         void RemovedPermissionInRole(RolePermission rolePermission);
+        void RemoveUserRole(UserRole userRole);
         void save();
     }
 }

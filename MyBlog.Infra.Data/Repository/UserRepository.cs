@@ -1,4 +1,5 @@
-﻿using MyBlog.Domain.Entities.User;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.Domain.Entities.User;
 using MyBlog.Domain.Interfaces;
 using MyBlog.Infra.Data.Context;
 using System;
@@ -27,9 +28,14 @@ namespace MyBlog.Infra.Data.Repository
             return _context.Users.Any(u => u.UserName == userName && u.Password == oldPass);
         }
 
+        public IEnumerable<User> GetUsers()
+        {
+            return _context.Users;
+        }
+
         public User GetUserByUserName(string userName)
         {
-            return _context.Users.SingleOrDefault(u => u.UserName == userName);
+            return _context.Users.Single(u => u.UserName == userName);
         }
 
         public bool IsExistEmail(string email)
@@ -55,6 +61,21 @@ namespace MyBlog.Infra.Data.Repository
         public void UpdateUser(User user)
         {
             _context.Update(user);
+        }
+
+        public IEnumerable<User> GetUsersForEditInAdmin(int userId)
+        {
+            return _context.Users.Where(u => u.UserId == userId).Include(u => u.UserRoles);
+        }
+
+        public User GetUserByUserId(int userId)
+        {
+            return _context.Users.Find(userId);
+        }
+
+        public IEnumerable<User> GetDeleteUsers()
+        {
+            return _context.Users.IgnoreQueryFilters();
         }
     }
 }

@@ -9,7 +9,12 @@ namespace MyBlog.Domain.Interfaces
 {
     public interface IUserRepository
     {
+        IEnumerable<User> GetUsers();
+        IEnumerable<User> GetDeleteUsers();
+        IEnumerable<User> GetUsersForEditInAdmin(int userId);
+
         User GetUserByUserName(string userName);
+        User GetUserByUserId(int userId);
 
         bool IsExistUserName(string userName);
         bool IsExistEmail(string email);
@@ -17,6 +22,7 @@ namespace MyBlog.Domain.Interfaces
         void AddUser(User user);
         void UpdateUser(User user);
         User LoginUser(string pass , string email);
+
         void Save();
 
     }

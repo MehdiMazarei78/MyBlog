@@ -33,6 +33,11 @@ namespace MyBlog.Infra.Data.Repository
             return _context.Posts.Include(p => p.PostStatus);
         }
 
+        public IEnumerable<Post> GetAllPostForAdmin()
+        {
+            return _context.Posts.Include(p => p.User).Include(p => p.PostStatus);
+        }
+
         public Post GetPostByPostId(int postId)
         {
             return _context.Posts.Find(postId);
@@ -41,6 +46,11 @@ namespace MyBlog.Infra.Data.Repository
         public Post GetPostForDelete(int postId)
         {
             return _context.Posts.Include(p => p.PostStatus).SingleOrDefault(p => p.PostId == postId);
+        }
+
+        public IEnumerable<Post> GetPostForDeleteForAdmin(int postId)
+        {
+            return _context.Posts.Where(p => p.PostId == postId).Include(p => p.User).Include(p => p.PostStatus);
         }
 
         public IEnumerable<PostStatus> GetStatuses()

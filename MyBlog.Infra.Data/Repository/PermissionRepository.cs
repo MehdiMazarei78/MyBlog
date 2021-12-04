@@ -63,5 +63,20 @@ namespace MyBlog.Infra.Data.Repository
         {
             _context.RolePermission.Remove(rolePermission);
         }
+
+        public void AddRolesToUser(UserRole userRole)
+        {
+            _context.UserRoles.Add(userRole);
+        }
+
+        public IEnumerable<UserRole> GetUserRole()
+        {
+           return _context.UserRoles;
+        }
+
+        public void RemoveUserRole(UserRole userRole)
+        {
+            _context.UserRoles.Remove(userRole);
+        }
     }
 }

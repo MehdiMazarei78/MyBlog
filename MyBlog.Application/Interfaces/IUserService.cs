@@ -14,6 +14,7 @@ namespace MyBlog.Application.Interfaces
         bool IsExistEmail(string eamil);
         bool ConfirmOldPassword(string name ,string oldPass);
         int AddUser(User user);
+        int AddUserFromAdmin(CreateUserForAdminViewModel user);
 
         User LoginUser(LoginViewModel user);
 
@@ -22,6 +23,14 @@ namespace MyBlog.Application.Interfaces
         void ChangePassword(string userName,string newPass);
 
         InformationUserPanelViewModel GetUserInformationForUserPanel(string userName);
+
+
+        UsersForAdminViewModel GetUsers(int pageId = 1, string filterEmail = "", string filterUserName = "");
+        EditUserForAdminViewModel GetUserForShowInEditMode(int userId);
+        void EditUserForAdmin(EditUserForAdminViewModel editUser);
+        InformationUserForAdminViewModel GetUserInformation(int userId);
+        void DeleteUser(int userId);
+        UsersForAdminViewModel GetDeleteUsers(int pageId = 1, string filterEmail = "", string filterUserName = "");
 
     }
 }

@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyBlog.Application.Interfaces;
+using MyBlog.Application.Security;
 using MyBlog.Domain.Entities.User;
 
 namespace MyBlog.Mvc.Pages.Admin.Roles
 {
+    [PermissionChecker(6)]
     public class IndexModel : PageModel
     {
 

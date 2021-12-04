@@ -15,7 +15,7 @@ using MyBlog.Application.DTOs.Posts;
 
 namespace MyBlog.Application.Services
 {
-   public class BlogService : IBlogService
+    public class BlogService : IBlogService
     {
         private IBlogRepository _blogRepository;
         public BlogService(IBlogRepository blogRepository)
@@ -76,7 +76,7 @@ namespace MyBlog.Application.Services
                         File.Delete(deletethumbPath);
                     }
                 }
-                post.PostImageName= IdGenerator.GenerateUniqCode() + Path.GetExtension(imgPost.FileName);
+                post.PostImageName = IdGenerator.GenerateUniqCode() + Path.GetExtension(imgPost.FileName);
                 string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/PostImage/image", post.PostImageName);
 
                 using (var stream = new FileStream(imagePath, FileMode.Create))
@@ -91,6 +91,18 @@ namespace MyBlog.Application.Services
             }
             _blogRepository.UpdatePost(post);
             _blogRepository.Save();
+        }
+
+        public List<ListPostForAdminViewModel> GetAllPostsForAdmin()
+        {
+            return _blogRepository.GetAllPostForAdmin().Select(p => new ListPostForAdminViewModel()
+            {
+                ImageName = p.PostImageName,
+                PostId = p.PostId,
+                Status = p.PostStatus.StatusTitle,
+                Title = p.PostTitle,
+                User = p.User.UserName
+            }).ToList();
         }
 
         public Tuple<List<ListPostsForShowInIndexViewModel>, int> GetAllPostsForShow(int pageId = 1, int take = 0)
@@ -135,7 +147,7 @@ namespace MyBlog.Application.Services
 
         public List<ListPostForUserViewModel> GetDeletePost(int userId)
         {
-          return _blogRepository.GetAllDeletePost().Where(p => p.IsDelete == true && p.UserId == userId).Select(p => new ListPostForUserViewModel()
+            return _blogRepository.GetAllDeletePost().Where(p => p.IsDelete == true && p.UserId == userId).Select(p => new ListPostForUserViewModel()
             {
                 ImageName = p.PostImageName,
                 PostId = p.PostId,
@@ -159,6 +171,21 @@ namespace MyBlog.Application.Services
                 Status = post.PostStatus.StatusTitle,
                 Title = post.PostTitle
             };
+        }
+
+        public DeletePostForAdminViewModel GetPostForDeleteForAdmin(int postId)
+        {
+            return _blogRepository.GetPostForDeleteForAdmin(postId).Select(p => new DeletePostForAdminViewModel()
+            {
+                Status = p.PostStatus.StatusTitle,
+                CreateDate = p.CreateDate,
+                PostId = p.PostId,
+                Title = p.PostTitle,
+                User = p.User.UserName
+            }).Single();
+           
+                
+            
         }
 
         public List<SelectListItem> GetStatuses()

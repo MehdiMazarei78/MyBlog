@@ -10,6 +10,8 @@ namespace MyBlog.Application.Interfaces
 {
    public interface IPermissionService
     {
+        bool CheckPermission(int permissionId, string userName);
+
         List<Role> GetRoles();
         List<Permission> GetPermissions();
 
@@ -22,5 +24,7 @@ namespace MyBlog.Application.Interfaces
         void UpdatePermissionsRole(int roleId, List<int> permissions);
 
         void AddPermissionToRole(int roleId, List<int> selectedPermission);
+        void AddRolesToUser(List<int> roleIds, int userId);
+        void EditRolesUserForAdmin(int userId, List<int> roleIds);
     }
 }
