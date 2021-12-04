@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <partial name="_HeadTags" />
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <partial name="_NavbarHeader" />
+        @*/.navbar-header*@
+        <partial name="_NavbarStaticSide" />
+        @*/.navbar-static-side*@
+
+
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+        @*/#page-wrapper*@
+    </div>
+    @*/#wrapper*@
+    <partial name="_Scripts" />
+    @RenderSection("Scripts", false)
+</body>
+
+</html>

@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Mvc", "MyBlog.Mvc\MyBlog.Mvc.csproj", "{0701A3C3-1250-48DE-AF0A-82BE3AE13912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Application", "MyBlog.Application\MyBlog.Application.csproj", "{A7163A91-6F0A-4A65-BFC7-A7E46567902F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Application", "MyBlog.Application\MyBlog.Application.csproj", "{A7163A91-6F0A-4A65-BFC7-A7E46567902F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Domain", "MyBlog.Domain\MyBlog.Domain.csproj", "{52388548-5827-4CE0-AAB6-F6585861A34A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Domain", "MyBlog.Domain\MyBlog.Domain.csproj", "{52388548-5827-4CE0-AAB6-F6585861A34A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Infra.Data", "MyBlog.Infra.Data\MyBlog.Infra.Data.csproj", "{D07F19D6-7D86-47C6-BCE2-645BE9BC89D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Infra.Data", "MyBlog.Infra.Data\MyBlog.Infra.Data.csproj", "{D07F19D6-7D86-47C6-BCE2-645BE9BC89D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBlog.Infra.IoC", "MyBlog.Infra.IoC\MyBlog.Infra.IoC.csproj", "{6B86D140-CB95-428E-B1AE-FCC69F024894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlog.Infra.IoC", "MyBlog.Infra.IoC\MyBlog.Infra.IoC.csproj", "{6B86D140-CB95-428E-B1AE-FCC69F024894}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

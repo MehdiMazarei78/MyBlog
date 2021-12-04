@@ -28,8 +28,8 @@ namespace MyBlog.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-             #region DataBase Context
+            services.AddRazorPages();
+            #region DataBase Context
             services.AddDbContext<MyBlogContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyBlogConnection"));
@@ -84,6 +84,7 @@ namespace MyBlog.Mvc
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

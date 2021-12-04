@@ -18,10 +18,12 @@ namespace MyBlog.Infra.IoC
             //Application Layer
             service.AddScoped<IUserService, UserService>();
             service.AddScoped<IBlogService, BlogService>();
+            service.AddScoped<IPermissionService, PermissionService>();
 
             //Infra Data Layer
             service.AddScoped<IUserRepository, UserRepository>();
             service.AddScoped<IBlogRepository, BlogRepository>();
+            service.AddScoped<IPermissionRepository, PermissionRepository>();
         }
     }
 }
